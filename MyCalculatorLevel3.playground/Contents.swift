@@ -11,13 +11,10 @@ class Calculator{
     
     func calculate() -> Int? {
         switch operators {
-        case "+" : return DivideOperation(firstNum: firstNum, operators: "+", secondNum: secondNum).result
-        case "-" : let operation = DivideOperation(firstNum: firstNum, operators: "-", secondNum: secondNum)
-            return operation.result
-        case "*" : let operation = DivideOperation(firstNum: firstNum, operators: "*", secondNum: secondNum)
-            return operation.result
-        case "/" : let operation = DivideOperation(firstNum: firstNum, operators: "/", secondNum: secondNum)
-            return operation.result
+        case "+" : return AddOperation(firstNum: firstNum, operators: "+", secondNum: secondNum).result
+        case "-" : return SubtractOperation(firstNum: firstNum, operators: "-", secondNum: secondNum).result
+        case "*" : return MultiplyOperation(firstNum: firstNum, operators: "*", secondNum: secondNum).result
+        case "/" : return DivideOperation(firstNum: firstNum, operators: "/", secondNum: secondNum).result
         default:
             return nil
         }
@@ -32,7 +29,7 @@ class AddOperation: Calculator{
         return result
     }
 }
-class SubstractOperation: Calculator {
+class SubtractOperation: Calculator {
     var result: Int {
         let result = firstNum - secondNum
         return result
@@ -56,21 +53,14 @@ class DivideOperation: Calculator {
 
 
 
-func runCalculator() {
-    let input = readLine()
-    let inputArray = input?.split(separator: "")
-    let firstNum : Int
-    let secondNum : Int
-    let operators : Int
-    Calculator(firstNum: firstNumber, operators: operators, secondNum: secondNum)
-}
 
-//let calculator = Calculator(firstNum: 5, operators: "/", secondNum: 3)
-//if let result = calculator.calculate() {
-//    print("결과: \(result)")
-//} else {
-//    print("유효하지 않은 연산이니 다시 한 번 확인해주세요.")
-//}
+
+let calculator = Calculator(firstNum: 5, operators: "+", secondNum: 3)
+if let result = calculator.calculate() {
+    print("결과: \(result)")
+} else {
+    print("유효하지 않은 연산이니 다시 한 번 확인해주세요.")
+}
 
 
 /*
